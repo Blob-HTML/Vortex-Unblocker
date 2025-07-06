@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex Unblocker</title>
+    <link rel="icon" href="https://i.postimg.cc/dQm5cM58/Vortex-Unblocker.png">
+    <style>
+        body {
+            color: #249df9;
+            font-family: 'Arial Black', sans-serif;
+            background-color: #d8e5f1;
+        }
+
+        .h1 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.6em;
+            margin-top: 135px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .Btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 155px;
+            height: 50px;
+            border: none;
+            padding: 0px 20px;
+            background-color: #2f88cb;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0px #0091ff;
+            transition-duration: .3s;
+            margin-left: 540px;
+            margin-right: 100px;
+        }
+
+        .svg {
+            width: 13px;
+            position: absolute;
+            right: 0;
+            margin-right: 20px;
+            fill: white;
+            transition-duration: .3s;
+        }
+
+        .Btn:hover {
+            color: transparent;
+        }
+
+        .Btn:hover svg {
+            right: 43%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            transition-duration: .3s;
+        }
+
+        .Btn:active {
+            transform: translate(3px, 3px);
+            transition-duration: .3s;
+            box-shadow: 2px 2px 0px #2f88cb;
+        }
+
+        .url {
+            color: #249df9;
+            width: 725px;
+            border-radius: 35px;
+            height: 50px;
+            border-color: #249df9;
+            box-shadow: 7px 7px 8px #249df9;
+            font-size: 1.3em;
+            text-align: center;
+            font-family: 'Arial Black', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input:focus {
+            border-color: #249df9;
+        }
+
+        .footer {
+            margin-top: 187px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h1">
+        <h1>Vortex Unblocker</h1>
+    </div>
+    <br>
+    <div class="url">
+        <input id="uv-search-engine" value="https://duckduckgo.com/?t=h_&q=%s" type="hidden">
+        <input class="url" id="url" placeholder='Search the Web...'>
+    </div>
+    <br><br>
+    <button class="Btn" onclick="handleProxy()">
+        Dive In The Web
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="m17.06,14.94l-2.8-1.34c1.08-1.23,1.74-2.84,1.74-4.6,0-3.86-3.14-7-7-7s-7,3.14-7,7,3.14,7,7,7c1.76,0,3.37-.66,4.6-1.74l1.34,2.8h0s5,5,5,5l2.12-2.12-5-5h0Zm-8.06-.94c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5Z" />
+        </svg>
+    </button>
+    <br>
+    <footer class="footer">
+        <p>© 2025 Vortex Unblocker - Blob-HTML</p>
+    </footer>
+
+    <script>
+        function handleProxy() {
+            const input = document.getElementById('url').value.trim();
+            if (!input) return;
+
+            let targetURL;
+
+            try {
+                // Attempt to create a new URL object to validate the input
+                new URL(input);
+                targetURL = input;
+            } catch (e) {
+                // If invalid, treat the input as a search query
+                const searchEngine = document.getElementById('uv-search-engine').value;
+                targetURL = searchEngine.replace('%s', encodeURIComponent(input));
+            }
+
+            // Encode the target URL
+            const encodedURL = encodeURIComponent(targetURL);
+
+            // Redirect to the proxy with the encoded URL as a query parameter
+            window.location.href = `/proxy?url=${encodedURL}`;
+        }
+    </script>
+</body>
+
+</html>
